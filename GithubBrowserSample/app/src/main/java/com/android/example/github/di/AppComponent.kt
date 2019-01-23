@@ -21,14 +21,17 @@ import com.android.example.github.GithubApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [
-        AndroidInjectionModule::class,
-        AppModule::class,
-        MainActivityModule::class]
+        modules = [
+            AndroidInjectionModule::class,
+            AndroidSupportInjectionModule::class,
+            AppModule::class,
+            MainActivityModule::class
+        ]
 )
 interface AppComponent {
     @Component.Builder

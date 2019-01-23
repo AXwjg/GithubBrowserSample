@@ -16,6 +16,7 @@
 
 package com.android.example.github.di
 
+import com.android.example.github.CheckVersionActivity
 import com.android.example.github.MainActivity
 
 import dagger.Module
@@ -26,4 +27,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class MainActivityModule {
     @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
     abstract fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeCheckActivity(): CheckVersionActivity
 }

@@ -22,7 +22,7 @@ import com.android.example.github.api.GithubService
 import com.android.example.github.db.GithubDb
 import com.android.example.github.db.RepoDao
 import com.android.example.github.db.UserDao
-import com.android.example.github.util.LiveDataCallAdapterFactory
+import com.android.example.github.vo.RemoteCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -35,9 +35,9 @@ class AppModule {
     @Provides
     fun provideGithubService(): GithubService {
         return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl("https://mbs-test.maphive.io/")
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .addCallAdapterFactory(RemoteCallAdapterFactory())
             .build()
             .create(GithubService::class.java)
     }

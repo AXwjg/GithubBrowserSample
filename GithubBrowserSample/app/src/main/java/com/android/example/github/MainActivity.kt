@@ -16,7 +16,9 @@
 
 package com.android.example.github
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import dagger.android.DispatchingAndroidInjector
@@ -24,12 +26,20 @@ import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
+
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        val button: Button = findViewById(R.id.click)
+        button.bringToFront()
+        button.setOnClickListener {
+            startActivity(Intent(this@MainActivity, CheckVersionActivity::class.java))
+        }
+
     }
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
